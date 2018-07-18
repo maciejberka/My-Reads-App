@@ -24,7 +24,7 @@ class Book extends React.Component {
               </select>
             </div>
           </div>
-          <div className="book-title">To Kill a Mockingbird</div>
+          <div className="book-title">{this.props.title}</div>
           <div className="book-authors">Harper Lee</div>
         </div>
       </li>

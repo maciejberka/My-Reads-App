@@ -8,7 +8,7 @@ import Bookshelves from './Bookshelves';
 class BooksApp extends React.Component {
   
   state = {
-    booksOnShelves: []
+    booksOnShelves: [],
   }
 
   componentDidMount() {
@@ -34,7 +34,7 @@ class BooksApp extends React.Component {
         <Route
           exact path = "/"
           render = {() => (
-            <Bookshelves books = {this.state.booksOnShelves}/>
+             <Bookshelves books = {this.state.booksOnShelves}/>
           )}
         />
 
