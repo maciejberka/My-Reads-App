@@ -7,6 +7,7 @@ import Book from './Book';
 class Bookshelves extends React.Component {
  
   componentDidMount(){
+    // It gives me an empty Array. Why?
     console.log(this.props.books)
   }
 
