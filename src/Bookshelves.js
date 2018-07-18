@@ -20,13 +20,20 @@ class Bookshelves extends React.Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {/* Book component here? */}
+                  
                   {this.props.books.map(function(book){
                     if(book.shelf === "currentlyReading"){
-                      return <li>{book.title}</li>;
+                      return <li key={book.id}>
+                          {<Book
+                          id={book.id}
+                          title={book.title}
+                          author={book.authors}
+                          cover = {book.imageLinks.thumbnail}
+                          />}
+                        </li>;
                     }
-                    
                   })}
+
                 </ol>
               </div>
             </div>
@@ -35,7 +42,18 @@ class Bookshelves extends React.Component {
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {/* Book component here? */}
+                {this.props.books.map(function(book){
+                    if(book.shelf === "wantToRead"){
+                      return <li key={book.id}>
+                          {<Book
+                          id={book.id}
+                          title={book.title}
+                          author={book.authors}
+                          cover = {book.imageLinks.thumbnail}
+                          />}
+                        </li>;
+                    }
+                  })}
                 </ol>
               </div>
             </div>
@@ -44,7 +62,18 @@ class Bookshelves extends React.Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {/* Book component here? */}
+                {this.props.books.map(function(book){
+                    if(book.shelf === "read"){
+                      return <li key={book.id}>
+                          {<Book
+                          id={book.id}
+                          title={book.title}
+                          author={book.authors}
+                          cover = {book.imageLinks.thumbnail}
+                          />}
+                        </li>;
+                    }
+                  })}
                 </ol>
               </div>
             </div>

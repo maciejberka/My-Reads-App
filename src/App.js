@@ -8,7 +8,7 @@ import Bookshelves from './Bookshelves';
 class BooksApp extends React.Component {
   
   state = {
-    booksOnShelves: [],
+    booksOnShelves: []
   }
 
   componentDidMount() {
