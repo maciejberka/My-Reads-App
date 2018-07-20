@@ -18,7 +18,6 @@ class BooksApp extends React.Component {
       })
   }
 
-  // This function is okay! But how to pass it to Book.js Component?
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       this.updateBooksOnShelves();
