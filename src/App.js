@@ -10,12 +10,23 @@ class BooksApp extends React.Component {
   state = {
     booksOnShelves: []
   }
-
-  componentDidMount() {
+  
+  updateBooksOnShelves = () => {
     BooksAPI.getAll()
       .then((books) => {
         this.setState({ booksOnShelves: books });
       })
+  }
+
+  // This function is okay! But how to pass it to Book.js Component?
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
+      this.updateBooksOnShelves();
+    }).catch(error => console.log(error));
+  };
+  
+  componentDidMount() {
+    this.updateBooksOnShelves();
   };
 
   render() {
@@ -34,7 +45,10 @@ class BooksApp extends React.Component {
         <Route
           exact path = "/"
           render = {() => (
-             <Bookshelves books = {this.state.booksOnShelves}/>
+             <Bookshelves 
+               books = {this.state.booksOnShelves}
+               changeShelf = {this.changeShelf}
+             />
           )}
         />
 

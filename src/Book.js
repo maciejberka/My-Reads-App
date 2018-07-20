@@ -1,13 +1,13 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Link} from 'react-router-dom'
 
 class Book extends React.Component {
-    
-  
 
   render(){
+ 
+   
 
     return(
         
@@ -15,7 +15,8 @@ class Book extends React.Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.cover})` }}></div>
             <div className="book-shelf-changer">
-              <select>
+              <select onChange={(event) => this.props.changeShelf(this.props.bookObject, event.target.value)}
+                defaultValue={this.props.shelf || 'none'}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
