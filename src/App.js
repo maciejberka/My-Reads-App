@@ -28,6 +28,7 @@ class BooksApp extends React.Component {
     }).catch(error => console.log(error));
   };
   
+  // Search books in database by provided query
   searchByQuery = (query) => {
     BooksAPI.search(query).then(searchResults => {
       this.setState({searchResults: searchResults});
@@ -35,6 +36,7 @@ class BooksApp extends React.Component {
     })
   }
 
+  //Save query
   getQuery = (e) => {
     this.setState({searchFor: e.target.value});
     //console.log(this.state.searchFor);

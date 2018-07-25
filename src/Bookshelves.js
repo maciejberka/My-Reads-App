@@ -56,7 +56,6 @@ class Bookshelves extends React.Component {
                           id={book.id}
                           title={book.title}
                           author={book.authors}
-                          
                           changeShelf = {this.props.changeShelf}
                         />}
                       </li>;
