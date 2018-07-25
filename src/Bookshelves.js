@@ -1,5 +1,5 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
+// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Link} from 'react-router-dom'
 import Book from './Book';
@@ -8,7 +8,7 @@ class Bookshelves extends React.Component {
 
   render(){
 
-    console.log(this.props.books);
+    //console.log(this.props.books);
 
     return(
       <div className="list-books">

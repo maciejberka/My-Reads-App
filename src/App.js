@@ -31,13 +31,13 @@ class BooksApp extends React.Component {
   searchByQuery = (query) => {
     BooksAPI.search(query).then(searchResults => {
       this.setState({searchResults: searchResults});
-      console.log(this.state.searchResults)
+      //console.log(this.state.searchResults)
     })
   }
 
   getQuery = (e) => {
     this.setState({searchFor: e.target.value});
-    console.log(this.state.searchFor);
+    //console.log(this.state.searchFor);
     this.searchByQuery(this.state.searchFor)
   }
 

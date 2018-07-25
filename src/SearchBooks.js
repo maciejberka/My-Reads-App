@@ -1,5 +1,4 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Link} from 'react-router-dom'
 import Book from './Book';
@@ -22,15 +21,18 @@ class SearchBooks extends React.Component {
             <ol className="books-grid">
 
               {this.props.searchResults.map(function(book){
-                console.log(book.shelf)
+                //console.log(book.shelf)
+
                 this.props.books.map(function(bookOnShelf){
-                  //if book === bookOnShelf
+                  
                   if(book.id === bookOnShelf.id){
-                    this.props.changeShelf(book, bookOnShelf.shelf)
-                  } else {
-                    this.props.changeShelf(book, bookOnShelf.shelf)
-                  } 
+                    book.shelf = bookOnShelf.shelf
+                  }
+                  //Break
+                  return true
+
                 }, this)
+                
                 return (
                   <li key={book.id}>
                     <Book

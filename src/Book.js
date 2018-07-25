@@ -1,7 +1,5 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
 import './App.css'
-import {Link} from 'react-router-dom'
 import PlaceHolder from './icons/book_placeholder.png';
 
 class Book extends React.Component {
