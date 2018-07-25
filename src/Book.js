@@ -2,8 +2,12 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Link} from 'react-router-dom'
+import PlaceHolder from './icons/book_placeholder.png';
 
 class Book extends React.Component {
+
+  
+  
 
   render(){
  
@@ -13,7 +17,7 @@ class Book extends React.Component {
         
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.cover})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.bookObject.imageLinks ? this.props.bookObject.imageLinks.thumbnail : PlaceHolder})` }}></div>
             <div className="book-shelf-changer">
               <select onChange={(event) => this.props.changeShelf(this.props.bookObject, event.target.value)}
                 defaultValue={this.props.shelf || 'none'}>

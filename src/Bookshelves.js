@@ -35,7 +35,7 @@ class Bookshelves extends React.Component {
                           shelf = {book.shelf}
                           title={book.title}
                           author={book.authors}
-                          cover = {book.imageLinks.thumbnail}
+                          // cover = {book.imageLinks.thumbnail}
                           changeShelf = {this.props.changeShelf}
                         />}
                       </li>;

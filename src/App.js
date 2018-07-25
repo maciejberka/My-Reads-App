@@ -8,9 +8,12 @@ import Bookshelves from './Bookshelves';
 class BooksApp extends React.Component {
   
   state = {
-    booksOnShelves: []
+    booksOnShelves: [],
+    searchFor: '',
+    searchResults: []
   }
   
+  // Get all books with assigned shelf and save them in this.state.booksOnShelves
   updateBooksOnShelves = () => {
     BooksAPI.getAll()
       .then((books) => {
@@ -18,12 +21,28 @@ class BooksApp extends React.Component {
       })
   }
 
+  // Use this function to change shelf of book
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       this.updateBooksOnShelves();
     }).catch(error => console.log(error));
   };
   
+  searchByQuery = (query) => {
+    BooksAPI.search(query).then(searchResults => {
+      this.setState({searchResults: searchResults});
+      console.log(this.state.searchResults)
+    })
+  }
+
+  getQuery = (e) => {
+    this.setState({searchFor: e.target.value});
+    console.log(this.state.searchFor);
+    this.searchByQuery(this.state.searchFor)
+  }
+
+  
+
   componentDidMount() {
     this.updateBooksOnShelves();
   };
@@ -36,7 +55,11 @@ class BooksApp extends React.Component {
         <Route
           exact path = "/search"
           render = {() => (
-            <SearchBooks/>
+            <SearchBooks
+              getQuery = {this.getQuery}
+              searchFor = {this.state.searchFor}
+              searchResults = {this.state.searchResults}
+            />
           )}
         />
         
