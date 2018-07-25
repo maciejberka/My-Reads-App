@@ -6,12 +6,7 @@ import PlaceHolder from './icons/book_placeholder.png';
 
 class Book extends React.Component {
 
-  
-  
-
-  render(){
- 
-   
+  render(){   
 
     return(
         

@@ -41,8 +41,6 @@ class BooksApp extends React.Component {
     this.searchByQuery(this.state.searchFor)
   }
 
-  
-
   componentDidMount() {
     this.updateBooksOnShelves();
   };
@@ -59,6 +57,8 @@ class BooksApp extends React.Component {
               getQuery = {this.getQuery}
               searchFor = {this.state.searchFor}
               searchResults = {this.state.searchResults}
+              changeShelf = {this.changeShelf}
+              books = {this.state.booksOnShelves}
             />
           )}
         />

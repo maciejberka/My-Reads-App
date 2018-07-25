@@ -8,52 +8,49 @@ class SearchBooks extends React.Component {
   
   render(){
 
-    console.log(this.props.searchResults)
-
-
     return(
-          <div className="search-books">
-          <div className="search-books-bar">
-            <Link to="/" className="close-search">Close</Link>
-            <div className="search-books-input-wrapper">
-
-              <input type="text" placeholder="Search by title or author" onChange={this.props.getQuery}/>
-
-            </div>
+      <div className="search-books">
+        <div className="search-books-bar">
+          <Link to="/" className="close-search">Close</Link>
+          <div className="search-books-input-wrapper">
+            <input type="text" placeholder="Search by title or author" onChange={this.props.getQuery}/>
           </div>
-          
-          <div className="search-books-results">
-          
-            
-            
-              {this.props.searchResults !== undefined && this.props.searchResults.length > 0 && (
-                
-                <ol className="books-grid">
-                  {this.props.searchResults.map(function(book){
-                    console.log(book.shelf)
-                    return (
-                      <li key={book.id}>
-                        <Book
-                          bookObject = {book}
-                          title={book.title}
-                          author={book.authors}
-                          shelf = {book.shelf}
-                          changeShelf = {this.props.changeShelf}
-                        />
-                      </li>
-                    )
+        </div>      
+        <div className="search-books-results">
+
+          {this.props.searchResults !== undefined && this.props.searchResults.length > 0 && (
+            <ol className="books-grid">
+
+              {this.props.searchResults.map(function(book){
+                console.log(book.shelf)
+                this.props.books.map(function(bookOnShelf){
+                  //if book === bookOnShelf
+                  if(book.id === bookOnShelf.id){
+                    this.props.changeShelf(book, bookOnShelf.shelf)
+                  } else {
+                    this.props.changeShelf(book, bookOnShelf.shelf)
+                  } 
+                }, this)
+                return (
+                  <li key={book.id}>
+                    <Book
+                      bookObject = {book}
+                      title={book.title}
+                      author={book.authors}
+                      shelf = {book.shelf}
+                      changeShelf = {this.props.changeShelf}
+                    />
+                  </li>
+                )                   
+              }, this)}
+
+            </ol>
+          )}
                     
-                  }, this)}
-                 
-                </ol>
-              )}
-           
-            
-          </div>
         </div>
+      </div>
     )
   }
-
 }
 
 export default SearchBooks
